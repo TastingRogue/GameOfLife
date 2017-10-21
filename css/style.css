@@ -1,0 +1,19 @@
+body {
+    overflow:hidden;
+}
+canvas{
+   margin-top: 2%;
+}
+
+#panel{
+   background-color: #90a4ae;
+   min-height: 89.55vh;
+}
+#content{
+   background-color: #9e9e9e;
+   min-height: 89.55vh;
+}
+.canvas-container {
+   width: 100%;
+   text-align:center;   
+}
