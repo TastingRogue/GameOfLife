@@ -8,31 +8,36 @@
 </head>
 <body>
    <nav>
-      <div class="nav-wrapper teal darken-2">
+      <div class="nav-wrapper blue-grey darken-4">
          <a href="#" class="brand-logo right"><i class="large material-icons">videogame_asset</i>G.O.L.</a>
       </div>
    </nav>
    <div class="row">
-      <div id="panel" class="col s5">
-         <h1>Game Of Life</h1>
+      <div id="panel" class="col s5 cyan darken-4">
+         <h3>Game Of Life</h3>
          <p>
             The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
          </p>
-         <h4>The Rules</h4>
-         <h5>For a space that is 'populated':</h5>
-         <ul>
-            <li>Each cell with one or no neighbors dies, as if by solitude.</li>
-            <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
-            <li>Each cell with two or three neighbors survives.</li>
-         </ul>
-         <br>
-         <h5>For a space that is 'empty' or 'unpopulated':</h5>
-         <ul>
-            <li>Each cell with three neighbors becomes populated.</li>
-         </ul>
+         <div class="r teal">
+            <div class="rl">
+               <h4>The Rules</h4>
+            </div>
+            <div class="rl-1 teal darken-2">
+               <h6>For a space that is 'populated':</h6>
+               <ul>
+                  <li>Each cell with one or no neighbors dies, as if by solitude.</li>
+                  <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
+                  <li>Each cell with two or three neighbors survives.</li>
+               </ul>
+               <h6>For a space that is 'empty' or 'unpopulated':</h6>
+               <ul>
+                  <li>Each cell with three neighbors becomes populated.</li>
+               </ul>
+            </div>
+         </div>
 
       </div>
-      <div id="content" class="col s7 canvas-container">
+      <div id="content" class="col s7 canvas-container grey darken-2">
             <canvas id="world"></canvas>
       </div>
    </div>

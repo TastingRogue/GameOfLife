@@ -93,6 +93,11 @@
                board[x+1][y]+
                board[x+1][y-1]+
                board[x][y-1];
+               /*board[board.length-1][board.length-1]+
+               board[board.length-1][board.length-2]+
+               board[board.length-1][board.length-3]+
+               board[board.length-2][board.length-1]+
+               board[board.length-3][board.length-1]*/
          }
          else//AbajoIzq
             if(x==0 && y==0){
@@ -107,6 +112,11 @@
                      board[x][y+1]+
                      board[x-1][y-1]+
                      board[x-1][y];
+                     /*board[0][0]+
+                     board[0][1]+
+                     board[0][2]+
+                     board[1][0]+
+                     board[2][0]*/
                }
                else//Ariba
                   if(y==0){
