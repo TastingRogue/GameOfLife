@@ -5,6 +5,21 @@ var canvas = document.getElementById('world');
 canvas.width = pixelSize*size;
 canvas.height = pixelSize*size;
 var context = canvas.getContext('2d');
+var board = blank_state();
+
+canvas.addEventListener("mousedown", getPosition, false);
+
+function getPosition(event){
+   var x = event.x;
+   var y = event.y;
+
+   var canvas = document.getElementById("world");
+
+   x -= canvas.offsetLeft;
+   y -= canvas.offsetTop;
+
+   console.log("x:" + Math.floor(x/6) + " y:" + Math.floor(y/6));
+}
 
 function blank_state(){
    var board = [];
@@ -63,16 +78,12 @@ function manual_population(board) {
 function displayBoard(board) {
    for (var x = 0; x < board.length; x++) {
       for (var y = 0; y < board[x].length; y++) {
-         drawInCanvas(x,y,board[x][y]);
+         context.beginPath();
+         context.rect(x*pixelSize,y*pixelSize,pixelSize,pixelSize);
+         context.fillStyle = board[x][y] ? 'black' : '#EEE';
+         context.fill();
       }
    }
-}
-
-function drawInCanvas(x,y,cell) {
-   context.beginPath();
-   context.rect(x*pixelSize,y*pixelSize,pixelSize,pixelSize);
-   context.fillStyle = cell ? 'black' : '#EEE';
-   context.fill();
 }
 
 function aliveNeighbors(board, x,y){
@@ -204,7 +215,6 @@ function iteration(board) {
    return newState;
 }
 
-var board = blank_state();
 manual_population(board);
 displayBoard(board);
 
