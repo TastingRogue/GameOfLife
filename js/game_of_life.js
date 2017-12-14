@@ -7,9 +7,9 @@ canvas.height = pixelSize*size;
 var context = canvas.getContext('2d');
 var board = blank_state();
 
-canvas.addEventListener("mousedown", function(e){ getPosition(e,board); }, false);
+canvas.addEventListener("mousedown", function(e){ getPosition(e,board); }, false); //evento para obtener la posicion del click
 
-function getPosition(event,board){
+function getPosition(event,board){//funcion que toma la posicion del click y pone o quita las celulas
    var x = event.x;
    var y = event.y;
    var cell = new Array(); 
@@ -225,7 +225,7 @@ function iteration(board) {
    return newState;
 }
 
-//manual_population(board);
+manual_population(board);
 displayBoard(board);
 
 $(document).ready(function(){
@@ -233,19 +233,31 @@ $(document).ready(function(){
    var myTimer
    var myTimerSpeed = 50 // 1/2 sec
 
-   $('#start' ).on('click' , start);
-   $('#stop'  ).on('click' , stop);
+   $('#start').on('click' , start);
+   $('#stop').on('click' , stop);
+   $('#clear').on('click',clear);
+
+   function clear(){
+      for (var i=0;i<size;i++){
+         for (var j=0;j<size;j++){
+            board[i][j] = 0;
+         }
+      }
+      displayBoard(board);
+   }
 
    function start(){
       myTimer = setInterval(function(){ timerTick() },myTimerSpeed);
       $('#start').prop('disabled', true);
-      $('#stop').prop('disabled', false);   
+      $('#stop').prop('disabled', false);
+      $('#clear').prop('disabled', true);   
    }
 
    function stop(){
       clearInterval(myTimer)
       $('#start').prop('disabled', false); 
-      $('#stop').prop('disabled', true); 
+      $('#stop').prop('disabled', true);
+      $('#clear').prop('disabled', false); 
    }
 
    function timerTick(){
