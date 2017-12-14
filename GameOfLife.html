@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <meta charset="UTF-8">
    <title>Gamo Of Life</title>
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
@@ -29,10 +30,12 @@
                   <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
                   <li>Each cell with two or three neighbors survives.</li>
                </ul>
-               <h6><b>For a space that is 'empty' or 'unpopulated':</b></b></h6>
+               <h6><b>For a space that is 'empty' or 'unpopulated':</b></h6>
                <ul>
                   <li>Each cell with three neighbors becomes populated.</li>
                </ul>
+               <button class="waves-effect waves-light btn" id="start" type="button">Start</button>
+               <button class="waves-effect waves-light btn" id="stop" type="button">Stop</button>
             </div>
          </div>
 
@@ -42,8 +45,8 @@
       </div>
    </div>
 
-   <script type="text/javascript" src="js/game_of_life.js"></script>
    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
    <script type="text/javascript" src="js/materialize.min.js"></script>
+   <script type="text/javascript" src="js/game_of_life.js"></script>
 </body>
 </html>

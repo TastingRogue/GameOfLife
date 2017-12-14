@@ -1,12 +1,10 @@
 
-
 var pixelSize = 6;
 var size = 87;
 var canvas = document.getElementById('world');
 canvas.width = pixelSize*size;
 canvas.height = pixelSize*size;
 var context = canvas.getContext('2d');
-var board = blank_state();
 
 function blank_state(){
    var board = [];
@@ -206,11 +204,36 @@ function iteration(board) {
    return newState;
 }
 
+var board = blank_state();
 manual_population(board);
 displayBoard(board);
 
-setInterval(function(){
-   var newState = iteration(board);
-   displayBoard(newState);
-   board = newState;
-},50);
+$(document).ready(function(){
+   
+   var myTimer
+   var myTimerSpeed = 50 // 1/2 sec
+
+   $('#start' ).on('click' , start);
+   $('#stop'  ).on('click' , stop);
+
+   function start(){
+      myTimer = setInterval(function(){ timerTick() },myTimerSpeed);
+      $('#start').prop('disabled', true);
+      $('#stop').prop('disabled', false);   
+   }
+
+   function stop(){
+      clearInterval(myTimer)
+      $('#start').prop('disabled', false); 
+      $('#stop').prop('disabled', true); 
+   }
+
+   function timerTick(){
+      var newState = iteration(board);
+      displayBoard(newState);
+      board = newState;
+   }
+});
+
+
+
