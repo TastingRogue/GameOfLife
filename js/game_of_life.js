@@ -7,18 +7,28 @@ canvas.height = pixelSize*size;
 var context = canvas.getContext('2d');
 var board = blank_state();
 
-canvas.addEventListener("mousedown", getPosition, false);
+canvas.addEventListener("mousedown", function(e){ getPosition(e,board); }, false);
 
-function getPosition(event){
+function getPosition(event,board){
    var x = event.x;
    var y = event.y;
+   var cell = new Array(); 
 
    var canvas = document.getElementById("world");
 
    x -= canvas.offsetLeft;
    y -= canvas.offsetTop;
+   x = Math.floor(x/6);
+   y = Math.floor(y/6);
 
-   console.log("x:" + Math.floor(x/6) + " y:" + Math.floor(y/6));
+   if(board[x][y]){
+      board[x][y] = 0;
+      displayBoard(board);
+   }
+   else{
+      board[x][y] = 1;
+      displayBoard(board);
+   }
 }
 
 function blank_state(){
@@ -215,7 +225,7 @@ function iteration(board) {
    return newState;
 }
 
-manual_population(board);
+//manual_population(board);
 displayBoard(board);
 
 $(document).ready(function(){
